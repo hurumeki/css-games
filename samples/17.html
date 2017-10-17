@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="text">
+  スカゼミとは、ネット上でプログラミング、
+  ＩＴ技術の勉強会をしているコミュニティで
+  す。その分野に詳しい人に支えられながら皆
+  で共に勉強し、学ぶ者もまた勉強しながらも
+  教え教わる、半学半教型の勉強会です。
+  </div>
+
+  <style>
+    .text {
+      background: white;
+      height: 100px;
+      line-height: 20px;
+      overflow: hidden;
+      position: relative;
+      width: 20em;
+
+      animation: 8s steps(4) both text-height;
+    }
+
+    @keyframes text-height {
+      from {
+        height: 20px;
+      }
+      to {
+        height: 100px;
+      }
+    }
+
+    .text::after {
+      background: white;
+      bottom: 0;
+      content: '';
+      height: 20px;
+      left: 0;
+      position: absolute;
+      width: 20em;
+
+      animation: 2s steps(20) 5 forwards after-animation;
+    }
+
+    @keyframes after-animation {
+      from {
+        width: 20em;
+        left: 0em;
+      }
+      to {
+        width: 0em;
+        left: 20em;
+      }
+    }
+  </style>
+</body>
+</html>

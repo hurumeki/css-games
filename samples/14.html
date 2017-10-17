@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input id="r1" name="r" type="radio" value="1" checked>
+  <input id="r2" name="r" type="radio" value="2">
+  <input id="r3" name="r" type="radio" value="3">
+
+  <div class="main">
+    <div class="left">
+      <label for="r1"> &lt; </label>
+      <label for="r2"> &lt; </label>
+    </div>
+    <div class="center">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </div>
+    <div class="right">
+      <label for="r2"> &gt; </label>
+      <label for="r3"> &gt; </label>
+    </div>
+  </div>
+
+  <style>
+    .main div {
+      display: inline-block;
+      width: 30px;
+    }
+
+    .main .center div {
+      display: none;
+    }
+
+    #r1:checked ~ .main .center :nth-child(1),
+    #r2:checked ~ .main .center :nth-child(2),
+    #r3:checked ~ .main .center :nth-child(3) {
+      display: block;
+    }
+
+    #r1:checked ~ .main label[for="r1"],
+    #r1:checked ~ .main .left label[for="r2"],
+    #r1:checked ~ .main label[for="r3"],
+    #r2:checked ~ .main label[for="r2"],
+    #r3:checked ~ .main label[for="r1"],
+    #r3:checked ~ .main .right label[for="r2"],
+    #r3:checked ~ .main label[for="r3"] {
+      display: none;
+    }
+  </style>
+</body>
+</html>

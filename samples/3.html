@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+  </div>
+
+  <style>
+  .wrapper {
+    transform-style: preserve-3d;
+  }
+
+  .wrapper div {
+    width: 100px;
+    height: 100px;
+    transition: transform 1s;
+  }
+
+  .d1 {
+    background: red;
+  }
+  .d1:hover {
+    transform: translate3d(100px, 100px, 100px);
+  }
+
+  .d2 {
+    background: green;
+  }
+  .d2:hover {
+    transform: rotate3d(30, 60, 90, 90deg);
+  }
+
+  .d3 {
+    background: blue;
+  }
+  .d3:hover {
+    transform: scale3d(2, 3, 4);
+  }
+  </style>
+</body>
+</html>

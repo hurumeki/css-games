@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="checkbox" id="hoge">
+  <input type="radio" id="yes" name="setting">
+  <input type="radio" id="no" name="setting">
+  <label for="hoge">
+    設定
+  </label>
+  <div class="setting">
+    現在の値は
+    <span class="yes">Yes</span>
+    <span class="no">No</span>
+  </div>
+  <div class="popup">
+  <label for="yes">
+    Yes
+  </label>
+  <label for="no">
+    No
+  </label>
+  </div>
+
+  <style>
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  label {
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+  }
+
+  .setting .yes,
+  .setting .no {
+    display: none;
+  }
+
+  .popup {
+    display: none;
+    background: #ddd;
+    position: absolute;
+    height: auto;
+    width: 190px;
+    top: calc(50% - 50px);
+    left: calc(50% - 100px);
+  }
+
+  .popup:active {
+    display: block;
+  }
+
+  .popup label {
+    margin: 20px;
+  }
+
+  #hoge:focus ~ .popup {
+    display: block;
+  }
+
+  #yes:checked ~ .setting .yes {
+    display: inline;
+  }
+
+  #no:checked ~ .setting .no {
+    display: inline;
+  }
+  </style>
+</body>
+</html>
