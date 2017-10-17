@@ -2,6 +2,4 @@
 
 GitHub Pagesで公開しています。
 
-[コードサンプル](https://github.com/hurumeki/css-games)
-
-[ゲーム](https://github.com/hurumeki/css-games)
+[https://hurumeki.github.io/css-games/index.html](https://hurumeki.github.io/css-games/index.html)
