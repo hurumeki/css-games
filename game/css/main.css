@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow: hidden;
+}
+
+body {
+  font-size: 0;
+  /*height: 100vh;*/
+  overflow: hidden;
+  position: relative;
+}
+
+body form {
+  /*height: 100%;*/
+}
+
+input[type="reset"],
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+#debug:checked input[type="reset"],
+#debug:checked input[type="radio"],
+#debug:checked input[type="checkbox"],
+#debug:checked ~ input[type="reset"],
+#debug:checked ~ input[type="radio"],
+#debug:checked ~ input[type="checkbox"],
+#debug:checked ~ * input[type="reset"],
+#debug:checked ~ * input[type="radio"],
+#debug:checked ~ * input[type="checkbox"] {
+  display: inline;
+}
+
+.container {
+  background: #eeeeee;
+  color: #3c3c3c;
+  height: 100vh;
+}
+
+.main {
+  height: 100%;
+}
+
+.page {
+  font-size: 2rem;
+  height: 100vh;
+  left: 100vw;
+  position: absolute;
+  padding: 50px 0 0;
+  top: 0;
+  transition: left .5s;
+  width: 100vw;
+}
+
+label {
+  display: block;
+  text-align: center;
+}
+
+#menu {
+  font-size: 2.4rem;
+  line-height: 50px;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  width: 100vw;
+  z-index: 100;
+  color: #f3f3f3;
+  box-sizing: content-box;
+
+  background: #3c3c3c;
+}
+
+#menu label {
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  z-index: 10;
+}
+
+#menu .title {
+  display: inline-block;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+#menu label,
+#menu .title span {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+
+#menu label[for="reset"] {
+  display: none;
+}
+
+#menu label[for="debug"] {
+  display: none;
+  right: 0;
+}
+
+#top {
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+.game-list {
+  width: 100%;
+  height: calc(100vh - 50px);
+  padding: 10px;
+}
+
+.game-list-item {
+  background: #f8f8f8;
+  border-radius: 2spx;
+  height: 100px;
+  font-size: 3rem;
+  margin: 10px 0 20px;
+  padding: 10px;
+  text-align: left;
+}
+
+.game-list-item .title {
+  border-bottom: 1px solid #3f3f3f;
+  display: block;
+  font-size: 2.4rem;
+  width: 100%;
+}
+
+.game-list-item .body {
+  font-size: 1.6rem;
+  line-height: 32px;
+  text-align: right;
+}
+
+#g1:checked ~ .container .main #menu label[for="reset"],
+#g2:checked ~ .container .main #menu label[for="reset"],
+#g3:checked ~ .container .main #menu label[for="reset"] {
+  display: block;
+}
+
+#g1:checked ~ .container #game1,
+#g2:checked ~ .container #game2,
+#g3:checked ~ .container #game3 {
+  /*display: block;*/
+  /*top: 0;*/
+  left: 0;
+}
+
+#g1:checked ~ .container #top,
+#g2:checked ~ .container #top,
+#g3:checked ~ .container #top {
+  left: -100vw;
+  /*display: none;*/
+}
+
+.g1-i,
+.g2-i,
+.g3-i {
+  display: none;
+}
+
+#g1:checked ~ .container .g1-i,
+#g2:checked ~ .container .g2-i,
+#g3:checked ~ .container .g3-i {
+  display: inline;
+}
+
+#g1:checked ~ .container .top-i,
+#g2:checked ~ .container .top-i,
+#g3:checked ~ .container .top-i {
+  display: none;
+}

@@ -1,12 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>CSS Game</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/game1.css">
+  <link rel="stylesheet" href="./css/game2.css">
+  <link rel="stylesheet" href="./css/game3.css">
 </head>
 <body>
-  
+  <form>
+    <input type="checkbox" id="debug">
+    <input type="reset" id="reset">
+    <input type="checkbox" id="g1">
+    <input type="checkbox" id="g2">
+    <input type="checkbox" id="g3">
+    <div class="container">
+      <div class="main">
+        <div id="menu">
+          <label for="reset">
+            &lt;
+          </label>
+          <div class="title">
+            <span class="top-i">CSS Games</span>
+            <span class="g1-i">クイズ</span>
+            <span class="g2-i">ナンプレ</span>
+            <span class="g3-i">ランゲーム</span>
+          </div>
+          <label for="debug">
+            debug
+          </label>
+        </div>
+        <div id="top" class="page">
+          <div class="game-list">
+            <label for="g1" class="game-list-item">
+              <span class="title">クイズ</span>
+              <p class="body">制限時間20秒の○×クイズ全10問です</p>
+            </label>
+            <label for="g2" class="game-list-item">
+              <span class="title">ナンプレ</span>
+              <p class="body">9x9のよくあるナンプレ</p>
+            </label>
+            <label class="game-list-item">
+              <span class="title"><s>ランゲーム</s></span>
+              <p class="body"><s>スーパー〇〇〇ラン的な何か</s></p>
+            </label>
+            </div>
+          </div>
+        </div>
+        <div id="game1" class="page">
+          <input type="checkbox" name="" id="q1-correct">
+          <input type="checkbox" name="" id="q1-incorrect">
+          <input type="checkbox" name="" id="q2-correct">
+          <input type="checkbox" name="" id="q2-incorrect">
+          <input type="checkbox" name="" id="q3-correct">
+          <input type="checkbox" name="" id="q3-incorrect">
+          <input type="checkbox" name="" id="q4-correct">
+          <input type="checkbox" name="" id="q4-incorrect">
+          <input type="checkbox" name="" id="q5-correct">
+          <input type="checkbox" name="" id="q5-incorrect">
+          <div id="q1" class="q-wrap">
+            <div class="q-count">
+              <span>1問目 / 全5問</span>
+              <span>2問目 / 全5問</span>
+              <span>3問目 / 全5問</span>
+              <span>4問目 / 全5問</span>
+              <span>5問目 / 全5問</span>
+            </div>
+            <div class="q-text-wrap">
+              <div class="q-text">
+                「ＣＳＳ」の最後のＳは「Ｓｔｙｌｅ」の頭文字である。
+              </div>
+              <div class="q-text">
+                ＣＳＳファイルを読みこむためのＨＴＭＬタグは、「ｍｅｔａ」である。
+              </div>
+              <div class="q-text">
+                「ｍａｒｇｉｎ」と「ｐａｄｄｉｎｇ」のうち、要素と要素の間の余白を設定するのは、「ｍａｒｇｉｎ」である。
+              </div>
+              <div class="q-text">
+                ＣＳＳでモニターで表示するときとは別に、印刷時の見た目も設定することができる。
+              </div>
+              <div class="q-text">
+                Ｗ３Ｃによって初めてＣＳＳが勧告されたのは１９９６年である。
+              </div>
+            </div>
+            <div class="q-answer">
+              <div class="maru">
+                <label for="q1-correct"></label>
+                <label for="q2-incorrect"></label>
+                <label for="q3-correct"></label>
+                <label for="q4-correct"></label>
+                <label for="q5-correct"></label>
+              </div>
+              <div class="batu">
+                <label for="q1-incorrect"></label>
+                <label for="q2-correct"></label>
+                <label for="q3-incorrect"></label>
+                <label for="q4-incorrect"></label>
+                <label for="q5-incorrect"></label>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="cover">
+            <div class="count">
+              <div>5</div>
+              <div>4</div>
+              <div>3</div>
+              <div>2</div>
+              <div>1</div>
+            </div>
+          </div> -->
+        </div>
+        <div id="game2" class="page">
+
+        </div>
+        <div id="game3" class="page">
+
+        </div>
+      </div>
+    </div>
+  </form>
 </body>
 </html>
