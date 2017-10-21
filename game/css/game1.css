@@ -91,7 +91,7 @@
   margin: calc(15% - 8px);
   width: 70%;
   height: 70%;
-  border: 8px solid red;
+  border: 8px solid #ec3c3c;
   border-radius: 70%;
   position: absolute;
 }
@@ -102,7 +102,7 @@
   display: block;
   width: 100%;
   height: 10px;
-  background: blue;
+  background: #3c3cec;
   position: absolute;
   top: calc(50% - 5px);
 }
@@ -122,6 +122,7 @@
   width: 100%;
   display: none;
   z-index: 10;
+  top: 100vh;
 }
 
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(1),
@@ -129,6 +130,10 @@
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(3),
 #g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(4),
 #g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(5) {
+  display: inline;
+}
+
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-count span:nth-child(5) {
   display: inline;
 }
 
@@ -172,6 +177,20 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
 #g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .q-wrap .q-answer .batu label:nth-child(4),
 #g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .q-wrap .q-answer .batu label:nth-child(5) {
   display: block;
+  animation: 3s show-by-move both;
+}
+
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-answer .maru label,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-answer .maru label,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-answer .maru label,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-answer .maru label,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-answer .maru label,
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-answer .batu label,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-answer .batu label,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-answer .batu label,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-answer .batu label,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-answer .batu label {
+  display: none !important;
 }
 
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(1),
@@ -188,6 +207,68 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
 #g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(1),
 #g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(2) {
   display: none;
+}
+
+#g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .result .in-correct,
+#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .in-correct
+#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .in-correct
+#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .in-correct
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .in-correct {
+  animation: 23s show-reserve both;
+}
+
+#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .correct,
+#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .correct,
+#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .correct,
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .correct {
+  animation: 3s flash both;
+}
+
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .result .correct {
+  opacity: 1;
+}
+
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .result .in-correct,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .result .in-correct,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .result .in-correct,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .result .in-correct {
+  opacity: 1;
+}
+
+@keyframes show-by-move {
+  0% {
+    top: 100vh;
+  }
+  99% {
+    top: 100vh;
+  }
+  100% {
+    top: 0vh;
+  }
+}
+
+@keyframes show-reserve {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* .q-time */
@@ -235,15 +316,15 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
 }
 
 .num1 {
-  animation: 10s 2s steps(1) forwards two-count;
+  animation: 10s 5s steps(1) forwards two-count;
 }
 
 .num2 {
-  animation: 10s 1s steps(10) 2 ten-count;
+  animation: 10s 4s steps(10) 2 ten-count;
 }
 
 .num3 {
-  animation: 1s 2s steps(10) 20 ten-count;
+  animation: 1s 5s steps(10) 20 ten-count;
 }
 
 .q-time .q-time-gage {
@@ -297,7 +378,30 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
   }
 }
 
+/* result */
+.result {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  padding-top: calc(70%);
+  font-size: 30px;
+  line-height: 30px;
+}
 
+.correct,
+.in-correct {
+  opacity: 0;
+}
+
+.correct {
+  color: #ec3c3c;
+}
+
+.in-correct {
+  color: #3c3cec;
+}
 
 /* .cover */
 .cover {
