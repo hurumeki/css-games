@@ -1,0 +1,26 @@
+{
+  "name": "css-games",
+  "version": "1.0.0",
+  "description": "GitHub Pagesで公開しています。",
+  "main": "index.js",
+  "scripts": {
+    "serve": "browser-sync start --server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hurumeki/css-games.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hurumeki/css-games/issues"
+  },
+  "homepage": "https://github.com/hurumeki/css-games#readme",
+  "dependencies": {
+    "npm": "^6.4.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.7"
+  }
+}
