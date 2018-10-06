@@ -1,0 +1,167 @@
+<html>
+    <head></head>
+    <body>
+        <style>
+            /* 見た目のCSS */
+            .maru,
+            .batu {
+                border: 1px solid black;
+                display: inline-block;
+                height: 1em;
+                padding: 1em;
+                position: relative;
+                text-align: center;
+                width: 1em;
+            }
+            
+            .maru span,
+            .batu span {
+                line-height: 1em;
+            }
+
+            /* 正解不正解の選択肢の上にlabelタグを重ねる */
+            .maru label,
+            .batu label {
+                bottom: 0;
+                display: block;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 100%;
+            }
+
+            /* 初期表示時に非表示の要素 */
+            .result,
+            .result .result-correct,
+            .result .result-incorrect,
+            .question-q-2,
+            .maru label[for*=q-2],
+            .batu label[for*=q-2],
+            .complete,
+            .reset {
+                display: none;
+            }
+
+            /* 1問目正解時 */
+            /* 2問目の問題文を表示 */
+            #q-1-correct:checked ~ .question .question-q-2 {
+                display: block;
+            }
+            /* 1問目の問題文を非表示 */
+            #q-1-correct:checked ~ .question .question-q-1 {
+                display: none;
+            }
+            /* 1問目の正解不正解の選択肢上のlabelタグを非表示 */
+            #q-1-correct:checked ~ .maru label[for*=q-1],
+            #q-1-correct:checked ~ .batu label[for*=q-1] {
+                display: none;
+            }
+            /* 2問目の正解不正解の選択肢上のlabelタグを表示 */
+            #q-1-correct:checked ~ .maru label[for*=q-2],
+            #q-1-correct:checked ~ .batu label[for*=q-2] {
+                display: block;
+            }
+            /* 「正解」の文字を表示 */
+            #q-1-correct:checked ~ .result,
+            #q-1-correct:checked ~ .result .result-correct {
+                display: block; 
+            }
+
+            /* 2問目正解時 */
+            /* 「全問正解」の文字を表示 */
+            #q-2-correct:checked ~ .complete {
+                display: block; 
+            }
+            /* 1問目の「正解」の文字を非表示 */
+            #q-2-correct:checked ~ .result {
+                display: none; 
+            }
+
+            /* 不正解時に「不正解」の文字を表示 */
+            #q-1-incorrect:checked ~ .result,
+            #q-1-incorrect:checked ~ .result .result-incorrect,
+            #q-2-incorrect:checked ~ .result .result-incorrect {
+                display: block;
+            }
+            /* 2問目不正解時に1問目の「正解」の文字を非表示 */
+            #q-2-incorrect:checked ~ .result .result-correct {
+                display: none;
+            }
+            /* 不正解時また全問正解時にリセットボタンを表示 */
+            #q-1-incorrect:checked ~ .reset,
+            #q-2-incorrect:checked ~ .reset,
+            #q-2-correct:checked ~ .reset {
+                display: block;
+            }
+            /* 不正解時また全問正解時に正解不正解の選択肢のlabelタグを非表示。回答不能にする */
+            #q-1-incorrect:checked ~ .maru label[for],
+            #q-1-incorrect:checked ~ .batu label[for],
+            #q-2-incorrect:checked ~ .maru label[for],
+            #q-2-incorrect:checked ~ .batu label[for],
+            #q-2-correct:checked ~ .maru label[for],
+            #q-2-correct:checked ~ .batu label[for] {
+                display: none;
+            }
+
+            /* 時間切れの表示 */
+            .timeout {
+                animation: show 0s 3s both;
+            }
+
+            /* 時間切れの停止 */
+            #q-1-correct:checked ~ .timeout {
+                animation-play-state: paused;
+            }
+
+            @keyframes show {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        </style>
+
+        <form>
+            <input type="checkbox" id="q-1-correct">
+            <input type="checkbox" id="q-1-incorrect">
+            <input type="checkbox" id="q-2-correct">
+            <input type="checkbox" id="q-2-incorrect">
+            
+            <div class="question">
+                <p class="question-q-1">問１</p>
+                <p class="question-q-2">問２</p>
+            </div>
+            
+            <div class="maru">
+                <span>◯</span>
+                <label for="q-1-correct"></label>
+                <label for="q-2-incorrect"></label>
+            </div>
+            
+            <div class="batu">
+                <span>×</span>
+                <label for="q-1-incorrect"></label>
+                <label for="q-2-correct"></label>
+            </div>
+            
+            <div class="result">
+                <span class="result-correct">正解</span>
+                <span class="result-incorrect">不正解</span>
+            </div>
+
+            <div class="timeout">
+                時間切れ
+            </div>
+            
+            <div class="complete">
+                全問正解
+            </div>              
+
+            <input type="reset" class="reset" value="やり直す"></span>
+        </form>  
+    </body>
+</html>
