@@ -3,7 +3,9 @@
 
 #game1 input[type=reset] {
   color: #f04e3e;
+  display: inline;
   text-decoration: underline;
+  margin: 0 auto;
 }
 
 .q-wrap {
@@ -194,12 +196,16 @@
 
 /* 時間切れを表示 */
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .result .timeout,
-#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .timeout
-#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .timeout
-#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .timeout
-#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .timeout {
+#g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .result .timeout input,
+#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .timeout,
+#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .timeout input,
+#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .timeout,
+#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .timeout input,
+#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .timeout,
+#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .timeout input,
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .timeout,
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .timeout input {
   animation: show 0s 23s both;
-  display: block;
 }
 
 /* 正解の表示 */
@@ -409,8 +415,13 @@
   display: none;
   position: absolute;
   text-align: center;
-  top: 250px;
+  top: 230px;
   width: 100%;
+}
+
+.timeout {
+  display: block;
+  opacity: 0;
 }
 
 .correct {
