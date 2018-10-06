@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="./css/game3.css">
 </head>
 <body>
-  <form>
-    <input type="checkbox" id="debug">
+  <!-- <form autocomplete="off"> -->
+  <form autocomplete="on">
+    <input type="checkbox" id="debug" checked>
     <input type="reset" id="reset">
     <input type="checkbox" id="g1">
     <input type="checkbox" id="g2">
@@ -35,9 +36,9 @@
         </div>
         <div id="top" class="page">
           <div class="game-list">
-            <label for="g1" class="game-list-item">
+            <label for="g1" class="game-list-item" tabIndex="1">
               <span class="title">クイズ</span>
-              <p class="body">制限時間20秒の○×クイズ全10問です</p>
+              <p class="body">制限時間20秒の○×クイズ全５問です</p>
             </label>
             <!-- <label for="g2" class="game-list-item">
               <span class="title">ナンプレ</span>
@@ -71,27 +72,26 @@
             </div>
             <div class="q-text-wrap">
               <div class="q-text">
-                「ＣＳＳ」の最後のＳは「Ｓｔｙｌ
+                「ＣＳＳ」の最後のＳは「Ｓｔｙｌ<br>
                 ｅ」の頭文字である。
               </div>
               <div class="q-text">
-                ＣＳＳファイルを読みこむためのＨ
-                ＴＭＬタグは、「ｍｅｔａ」である
-                。
+                外部のＣＳＳファイルを読みこむた<br>
+                めのＨＴＭＬタグは、「ｍｅｔａ」<br>
+                である。
               </div>
               <div class="q-text">
-                「ｍａｒｇｉｎ」と「ｐａｄｄｉｎ
-                ｇ」のうち、要素と要素の間の余白
+                「ｍａｒｇｉｎ」と「ｐａｄｄｉｎ<br>
+                ｇ」のうち、要素と要素の間の余白<br>
                 を設定するのは、「ｍａｒｇｉｎ」
                 である。
               </div>
               <div class="q-text">
-                ＣＳＳでモニターで表示するときと
-                は別に、印刷時の見た目も設定する
-                ことができる。
+                ＣＳＳでは印刷時の見た目も設定す<br>
+                ることができる。
               </div>
               <div class="q-text">
-                Ｗ３Ｃによって初めてＣＳＳが勧告
+                Ｗ３Ｃによって初めてＣＳＳが勧告<br>
                 されたのは１９９６年である。
               </div>
             </div>
@@ -100,14 +100,14 @@
                 <div class="q-time-clock">
                   <ul>
                     <li>
-                      <ul class="num1">
+                      <ul class="num num1">
                         <li>2</li>
                         <li>1</li>
                         <li>0</li>
                       </ul>
                     </li>
                     <li>
-                      <ul class="num2">
+                      <ul class="num num2">
                         <li>0</li>
                         <li>9</li>
                         <li>8</li>
@@ -122,7 +122,7 @@
                     </li>
                     <li>:</li>
                     <li>
-                      <ul class="num3">
+                      <ul class="num num3">
                         <li>0</li>
                         <li>9</li>
                         <li>8</li>
@@ -145,14 +145,14 @@
                 <div class="q-time-clock">
                   <ul>
                     <li>
-                      <ul class="num1">
+                      <ul class="num num1">
                         <li>2</li>
                         <li>1</li>
                         <li>0</li>
                       </ul>
                     </li>
                     <li>
-                      <ul class="num2">
+                      <ul class="num num2">
                         <li>0</li>
                         <li>9</li>
                         <li>8</li>
@@ -167,7 +167,7 @@
                     </li>
                     <li>:</li>
                     <li>
-                      <ul class="num3">
+                      <ul class="num num3">
                         <li>0</li>
                         <li>9</li>
                         <li>8</li>
@@ -189,14 +189,14 @@
             </div>
             <div class="q-answer">
               <div class="maru">
-                <label for="q1-correct"></label>
+                <label for="q1-incorrect"></label>
                 <label for="q2-incorrect"></label>
                 <label for="q3-correct"></label>
                 <label for="q4-correct"></label>
                 <label for="q5-correct"></label>
               </div>
               <div class="batu">
-                <label for="q1-incorrect"></label>
+                <label for="q1-correct"></label>
                 <label for="q2-correct"></label>
                 <label for="q3-incorrect"></label>
                 <label for="q4-incorrect"></label>
@@ -205,22 +205,39 @@
             </div>
           </div>
           <div class="result">
-            <div class="correct">
-              正解
+            <div>
+              <div class="correct">
+                正解
+              </div>
+              <div class="in-correct">
+                不正解<br>
+                <input type="reset" value="戻る">
+              </div>      
+              <div class="timeout">
+                時間切れ<br>
+                <input type="reset" value="戻る">
+              </div>      
             </div>
-            <div class="in-correct">
-              不正解
+            <div>
+              <div class="correct">
+                正解
+              </div>
+              <div class="in-correct">
+                不正解<br>
+                <input type="reset" value="戻る">
+              </div>      
+              <div class="timeout">
+                時間切れ<br>
+                <input type="reset" value="戻る">
+              </div>      
             </div>
           </div>
-          <!-- <div class="cover">
-            <div class="count">
-              <div>5</div>
-              <div>4</div>
-              <div>3</div>
-              <div>2</div>
-              <div>1</div>
+          <div class="complete">
+            <div class="complete-text">
+                <p>全問正解です！</p>
+                <input type="reset" value="戻る">    
             </div>
-          </div> -->
+          </div>
         </div>
         <div id="game2" class="page">
 

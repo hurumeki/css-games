@@ -7,6 +7,7 @@
 
 html {
   font-size: 62.5%;
+  font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
   overflow: hidden;
 }
 
@@ -56,14 +57,18 @@ input[type="checkbox"] {
   position: absolute;
   padding: 50px 0 0;
   top: 0;
-  transition: left .5s;
+  /* transition: left .5s; */
   width: 100vw;
 }
 
 label {
+  box-sizing: border-box;
+  cursor: pointer;
   display: block;
+  outline: none;
   text-align: center;
 }
+
 
 #menu {
   font-size: 2.4rem;
@@ -129,12 +134,16 @@ label {
 
 .game-list-item {
   background: #f8f8f8;
-  border-radius: 2spx;
+  border-radius: 2px;
   height: 100px;
   font-size: 3rem;
   margin: 10px 0 20px;
   padding: 10px;
   text-align: left;
+}
+
+.game-list-item:focus {
+  background: #ccc; 
 }
 
 .game-list-item .title {
@@ -156,10 +165,18 @@ label {
   display: block;
 }
 
+#g1:not(:checked) ~ .container #game1,
+#g2:not(:checked) ~ .container #game2,
+#g3:not(:checked) ~ .container #game3 {
+  display: none;
+  /*top: 0;*/
+  /* left: 0; */
+}
+
 #g1:checked ~ .container #game1,
 #g2:checked ~ .container #game2,
 #g3:checked ~ .container #game3 {
-  /*display: block;*/
+  display: block;
   /*top: 0;*/
   left: 0;
 }

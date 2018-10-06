@@ -1,6 +1,11 @@
 #game1 {
 }
 
+#game1 input[type=reset] {
+  color: #f04e3e;
+  text-decoration: underline;
+}
+
 .q-wrap {
   padding: 10px;
   height: calc(100vh - 50px);
@@ -21,7 +26,6 @@
   padding: 19px;
   background: #f8f8f8;
   border: 1px solid black;
-  box-sizing: border-box;
 }
 
 .q-text {
@@ -32,20 +36,11 @@
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  text-align: left;
   width: 16em;
 }
 
-@keyframes text-height {
-  from {
-    height: 0px;
-  }
-  to {
-    height: 100px;
-  }
-}
-
 .q-text::after {
+  animation: 2s 4s steps(16) 5 forwards after-animation;
   background: #f8f8f8;
   bottom: 0;
   content: '';
@@ -53,19 +48,6 @@
   left: 0;
   position: absolute;
   width: 16em;
-
-  animation: 2s 8s steps(16) 5 forwards after-animation;
-}
-
-@keyframes after-animation {
-  from {
-    width: 16em;
-    left: 0em;
-  }
-  to {
-    width: 0em;
-    left: 16em;
-  }
 }
 
 .q-answer {
@@ -122,21 +104,19 @@
   width: 100%;
   display: none;
   z-index: 10;
-  top: 100vh;
 }
 
+/* 問題数の表示 */
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(1),
 #g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(2),
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(3),
 #g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(4),
-#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(5) {
-  display: inline;
-}
-
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .q-wrap .q-count span:nth-child(5),
 #g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-count span:nth-child(5) {
-  display: inline;
+    display: inline;
 }
 
+/* 問の文字の高さの変更 */
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-text:nth-child(1),
 #g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .q-wrap .q-text:nth-child(2),
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .q-wrap .q-text:nth-child(3),
@@ -146,6 +126,7 @@
   display: block;
 }
 
+/* 問の文字のカバーをアニメーション */
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-text:nth-child(1)::after,
 #g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .q-wrap .q-text:nth-child(2)::after,
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .q-wrap .q-text:nth-child(3)::after,
@@ -153,19 +134,8 @@
 #g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .q-wrap .q-text:nth-child(5)::after {
   animation: 2s 0s steps(16, end) 5 both after-animation;
 }
-/*#g1:checked ~ .container .q-text:nth-child(2)::after {
-animation: 2s 0s steps(16, end) 5 both after-animation;
-}
-#g1:checked ~ .container .q-text:nth-child(3)::after {
-animation: 2s 0s steps(16, end) 5 both after-animation;
-}
-#g1:checked ~ .container .q-text:nth-child(4)::after {
-animation: 2s 0s steps(16, end) 5 both after-animation;
-}
-#g1:checked ~ .container .q-text:nth-child(5)::after {
-animation: 2s 0s steps(16, end) 5 both after-animation;
-}*/
 
+/* 回答ボタンの上にlabelを表示するアニメーション */
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-answer .maru label:nth-child(1),
 #g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .q-wrap .q-answer .maru label:nth-child(2),
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .q-wrap .q-answer .maru label:nth-child(3),
@@ -177,22 +147,34 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
 #g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .q-wrap .q-answer .batu label:nth-child(4),
 #g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .q-wrap .q-answer .batu label:nth-child(5) {
   display: block;
-  animation: 3s show-by-move both;
+  animation: show 0s 3s both;
 }
 
-#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-answer .maru label,
-#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-answer .maru label,
-#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-answer .maru label,
-#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-answer .maru label,
-#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-answer .maru label,
-#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-answer .batu label,
-#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-answer .batu label,
-#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-answer .batu label,
-#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-answer .batu label,
-#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-answer .batu label {
-  display: none !important;
+/* 回答後に回答ボタンの上のlabelを非表示 */
+#g1:checked ~ .container #game1 #q1-correct:checked ~ .q-wrap .q-answer .maru label:nth-child(1),
+#g1:checked ~ .container #game1 #q1-correct:checked ~ .q-wrap .q-answer .batu label:nth-child(1),
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-answer .maru label:nth-child(1),
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-answer .batu label:nth-child(1),
+#g1:checked ~ .container #game1 #q2-correct:checked ~ .q-wrap .q-answer .maru label:nth-child(2),
+#g1:checked ~ .container #game1 #q2-correct:checked ~ .q-wrap .q-answer .batu label:nth-child(2),
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-answer .maru label:nth-child(2),
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-answer .batu label:nth-child(2),
+#g1:checked ~ .container #game1 #q3-correct:checked ~ .q-wrap .q-answer .maru label:nth-child(3),
+#g1:checked ~ .container #game1 #q3-correct:checked ~ .q-wrap .q-answer .batu label:nth-child(3),
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-answer .maru label:nth-child(3),
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-answer .batu label:nth-child(3),
+#g1:checked ~ .container #game1 #q4-correct:checked ~ .q-wrap .q-answer .maru label:nth-child(4),
+#g1:checked ~ .container #game1 #q4-correct:checked ~ .q-wrap .q-answer .batu label:nth-child(4),
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-answer .maru label:nth-child(4),
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-answer .batu label:nth-child(4),
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-answer .maru label:nth-child(5),
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-answer .batu label:nth-child(5),
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-answer .maru label:nth-child(5),
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-answer .batu label:nth-child(5) {
+  display: none;
 }
 
+/* タイマーの表示 */
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(1),
 #g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(2),
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(1),
@@ -201,6 +183,7 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
   display: inline-block;
 }
 
+/* 使わない方のタイマーを非表示 */
 #g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(2),
 #g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(1),
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .q-wrap .q-time > div:nth-child(2),
@@ -209,49 +192,72 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
   display: none;
 }
 
-#g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .result .in-correct,
-#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .in-correct
-#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .in-correct
-#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .in-correct
-#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .in-correct {
-  animation: 23s show-reserve both;
+/* 時間切れを表示 */
+#g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .result .timeout,
+#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .timeout
+#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .timeout
+#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .timeout
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .timeout {
+  animation: show 0s 23s both;
+  display: block;
 }
 
-#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .correct,
-#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .correct,
-#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .correct,
-#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .correct {
-  animation: 3s flash both;
+/* 正解の表示 */
+#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result div:nth-child(1) .correct,
+#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result div:nth-child(2) .correct,
+#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result div:nth-child(1) .correct,
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result div:nth-child(2) .correct {
+  animation: show 0s 2s both reverse;
+  display: block;
 }
 
-#g1:checked ~ .container #game1 #q5-correct:checked ~ .result .correct {
-  opacity: 1;
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .complete,
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .complete .complete-text {
+  display: block;
 }
 
 #g1:checked ~ .container #game1 #q1-incorrect:checked ~ .result .in-correct,
 #g1:checked ~ .container #game1 #q2-incorrect:checked ~ .result .in-correct,
 #g1:checked ~ .container #game1 #q3-incorrect:checked ~ .result .in-correct,
 #g1:checked ~ .container #game1 #q4-incorrect:checked ~ .result .in-correct {
-  opacity: 1;
+  display: block;
 }
 
-@keyframes show-by-move {
-  0% {
-    top: 100vh;
-  }
-  99% {
-    top: 100vh;
-  }
-  100% {
-    top: 0vh;
-  }
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-text,
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-text::after,
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-text,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-text::after,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-text,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-text::after,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-text,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-text::after,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-text,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-text::after,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-time .q-time-clock .num,
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-text,
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-text::after,
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .result .timeout {
+  animation-play-state: paused !important;
 }
 
-@keyframes show-reserve {
+@keyframes show {
   0% {
-    opacity: 0;
-  }
-  99% {
     opacity: 0;
   }
   100% {
@@ -259,20 +265,27 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
   }
 }
 
-@keyframes flash {
-  0% {
-    opacity: 1;
+@keyframes text-height {
+  from {
+    height: 0px;
   }
-  99% {
-    opacity: 1;
+  to {
+    height: 100px;
   }
-  100% {
-    opacity: 0;
+}
+
+@keyframes after-animation {
+  from {
+    width: 16em;
+    left: 0em;
+  }
+  to {
+    width: 0em;
+    left: 16em;
   }
 }
 
 /* .q-time */
-
 .q-time > div {
   width: 100%;
 }
@@ -302,7 +315,6 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
 }
 
 .q-time .q-time-clock > ul > li {
-  display: inline-block;
   line-height: 14px;
   height: 14px;
   text-align: center;
@@ -316,15 +328,15 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
 }
 
 .num1 {
-  animation: 10s 5s steps(1) forwards two-count;
+  animation: 10s 3s steps(1) forwards two-count;
 }
 
 .num2 {
-  animation: 10s 4s steps(10) 2 ten-count;
+  animation: 10s 2s steps(10) 2 ten-count;
 }
 
 .num3 {
-  animation: 1s 5s steps(10) 20 ten-count;
+  animation: 1s 3s steps(10) 20 ten-count;
 }
 
 .q-time .q-time-gage {
@@ -339,7 +351,7 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
   border-radius: 2px;
   background: #3c3cec;
   position: absolute;
-  animation: 20s 2s linear both v-shrink;
+  animation: 20s 3s linear both shrink-width;
 }
 
 @keyframes two-count {
@@ -369,7 +381,7 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
   }
 }
 
-@keyframes v-shrink {
+@keyframes shrink-width {
   from {
     width: 100%;
   }
@@ -379,20 +391,26 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
 }
 
 /* result */
-.result {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  text-align: center;
-  padding-top: calc(70%);
+.result,
+.complete {
   font-size: 30px;
+  height: 100%;
   line-height: 30px;
+  position: absolute;
+  top: 50px;
+  text-align: center;
+  width: 100%;
 }
 
 .correct,
-.in-correct {
-  opacity: 0;
+.in-correct,
+.timeout,
+.complete-text {
+  display: none;
+  position: absolute;
+  text-align: center;
+  top: 250px;
+  width: 100%;
 }
 
 .correct {
@@ -403,79 +421,9 @@ animation: 2s 0s steps(16, end) 5 both after-animation;
   color: #3c3cec;
 }
 
-/* .cover */
-.cover {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #000;
-  opacity: .7;
-}
-
-#g1:checked ~ .container .cover {
-  animation: 5s ease 1s forwards hide;
-}
-
-@keyframes hide {
-  0% {
-    opacity: .7;
-    height: 100%;
-  }
-  99% {
-    opacity: .7;
-    height: 100%;
-  }
-  100% {
-    opacity: 0;
-    height: 0%;
-  }
-}
-
-@keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.cover .count {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #f8f8f8;
-  border-radius: 50px;
-  color:  #f8f8f8;
-  margin: 0 auto;
-  top: calc(50% - 100px);
-  position: relative;
+.complete {
+  display: none;
   text-align: center;
+  color: #aea310;
 }
 
-.cover .count div {
-  opacity: 0;
-  height: 0;
-  line-height: 100px;
-  font-size: 3rem;
-}
-
-#g1:checked ~ .container .cover .count div:nth-child(1) {
-  animation: 1s ease 1s forwards fadeout;
-}
-#g1:checked ~ .container .cover .count div:nth-child(2) {
-  animation: 1s ease 2s forwards fadeout;
-}
-#g1:checked ~ .container .cover .count div:nth-child(3) {
-  animation: 1s ease 3s forwards fadeout;
-}
-#g1:checked ~ .container .cover .count div:nth-child(4) {
-  animation: 1s ease 4s forwards fadeout;
-}
-#g1:checked ~ .container .cover .count div:nth-child(5) {
-  animation: 1s ease 5s forwards fadeout;
-}
