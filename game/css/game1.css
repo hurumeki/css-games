@@ -2,10 +2,13 @@
 }
 
 #game1 input[type=reset] {
+  background: transparent;
   color: #f04e3e;
   display: inline;
   text-decoration: underline;
   margin: 0 auto;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .q-wrap {
@@ -25,7 +28,7 @@
 
 .q-text-wrap {
   height: 140px;
-  padding: 19px;
+  padding: 10px;
   background: #f8f8f8;
   border: 1px solid black;
 }
@@ -42,7 +45,6 @@
 }
 
 .q-text::after {
-  animation: 2s 4s steps(16) 5 forwards after-animation;
   background: #f8f8f8;
   bottom: 0;
   content: '';
@@ -195,17 +197,12 @@
 }
 
 /* 時間切れを表示 */
-#g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .result .timeout,
-#g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .result .timeout input,
-#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .timeout,
-#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .result .timeout input,
-#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .timeout,
-#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result .timeout input,
-#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .timeout,
-#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result .timeout input,
-#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .timeout,
-#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result .timeout input {
-  animation: show 0s 23s both;
+#g1:checked ~ .container #game1 #q1-correct:not(:checked) ~ .timeout div:nth-child(1),
+#g1:checked ~ .container #game1 #q1-correct:checked ~ #q2-correct:not(:checked) ~ .timeout div:nth-child(2),
+#g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .timeout div:nth-child(1),
+#g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .timeout div:nth-child(2),
+#g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .timeout div:nth-child(1) {
+  animation: show 23s 0s both;
 }
 
 /* 正解の表示 */
@@ -213,52 +210,52 @@
 #g1:checked ~ .container #game1 #q2-correct:checked ~ #q3-correct:not(:checked) ~ .result div:nth-child(2) .correct,
 #g1:checked ~ .container #game1 #q3-correct:checked ~ #q4-correct:not(:checked) ~ .result div:nth-child(1) .correct,
 #g1:checked ~ .container #game1 #q4-correct:checked ~ #q5-correct:not(:checked) ~ .result div:nth-child(2) .correct {
-  animation: show 0s 2s both reverse;
-  display: block;
+  animation: hide 2s 0s 1 both;
 }
 
 #g1:checked ~ .container #game1 #q5-correct:checked ~ .complete,
 #g1:checked ~ .container #game1 #q5-correct:checked ~ .complete .complete-text {
   display: block;
+  opacity: 1;
 }
 
 #g1:checked ~ .container #game1 #q1-incorrect:checked ~ .result .in-correct,
 #g1:checked ~ .container #game1 #q2-incorrect:checked ~ .result .in-correct,
 #g1:checked ~ .container #game1 #q3-incorrect:checked ~ .result .in-correct,
 #g1:checked ~ .container #game1 #q4-incorrect:checked ~ .result .in-correct {
-  display: block;
+  opacity: 1;
 }
 
 #g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
 #g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
 #g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-text,
 #g1:checked ~ .container #game1 #q1-incorrect:checked ~ .q-wrap .q-text::after,
-#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q1-incorrect:checked ~ .result .timeout div,
 #g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
 #g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
 #g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-text,
 #g1:checked ~ .container #game1 #q2-incorrect:checked ~ .q-wrap .q-text::after,
-#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q2-incorrect:checked ~ .result .timeout div,
 #g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
 #g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
 #g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-text,
 #g1:checked ~ .container #game1 #q3-incorrect:checked ~ .q-wrap .q-text::after,
-#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q3-incorrect:checked ~ .result .timeout div,
 #g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
 #g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
 #g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-text,
 #g1:checked ~ .container #game1 #q4-incorrect:checked ~ .q-wrap .q-text::after,
-#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q4-incorrect:checked ~ .result .timeout div,
 #g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
 #g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-time .q-time-clock .num,
 #g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-text,
 #g1:checked ~ .container #game1 #q5-incorrect:checked ~ .q-wrap .q-text::after,
-#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .result .timeout,
+#g1:checked ~ .container #game1 #q5-incorrect:checked ~ .result .timeout div,
 #g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-time .q-time-gage .q-time-gage-bar,
 #g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-time .q-time-clock .num,
 #g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-text,
 #g1:checked ~ .container #game1 #q5-correct:checked ~ .q-wrap .q-text::after,
-#g1:checked ~ .container #game1 #q5-correct:checked ~ .result .timeout {
+#g1:checked ~ .container #game1 #q5-correct:checked ~ .result .timeout div {
   animation-play-state: paused !important;
 }
 
@@ -266,8 +263,23 @@
   0% {
     opacity: 0;
   }
+  99% {
+    opacity: 0;
+  }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
@@ -410,18 +422,23 @@
 
 .correct,
 .in-correct,
-.timeout,
 .complete-text {
-  display: none;
+  opacity: 0;
   position: absolute;
   text-align: center;
   top: 230px;
   width: 100%;
 }
 
-.timeout {
-  display: block;
+.timeout div {
+  position: absolute;
+  text-align: center;
+  top: 240px;
+  width: 100%;
   opacity: 0;
+}
+.timeout div input {
+  display: block;
 }
 
 .correct {
